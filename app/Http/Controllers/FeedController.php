@@ -35,6 +35,7 @@ class FeedController extends Controller
 
         $posts = Post::where('user_id', Auth::id())
         ->orWhereIn('user_id', $this->friends)
+        ->with('comments')
         ->orderBy('popularity', 'desc')
         ->paginate(30);
 
