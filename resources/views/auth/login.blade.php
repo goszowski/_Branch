@@ -53,7 +53,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-16 offset-md-8">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" data-style="expand-left">
                                     {{ __('Login') }}
                                 </button>
 
