@@ -4,12 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Like\PostLike;
+use Auth;
 
 class Post extends Model
 {
     protected $objectCache = [
         'likes_amount' => null,
         'comments_amount' => null,
+        'auth_user_like_it' => null,
     ];
     /**
      * The table associated with the model.
@@ -60,5 +62,15 @@ class Post extends Model
     public function getPopularPartOfCommentsAttribute()
     {
         return $this->comments()->take(3)->get();
+    }
+
+    public function getAuthUserLikeItAttribute()
+    {
+        if($this->objectCache['auth_user_like_it'] === null)
+        {
+            $this->objectCache['auth_user_like_it'] = PostLike::where('post_id', $this->id)->where('user_id', Auth::id())->exists();
+        }
+
+        return $this->objectCache['auth_user_like_it'];
     }
 }

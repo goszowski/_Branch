@@ -3,7 +3,7 @@
 @section('feed-content')
 
 @foreach($posts as $post)
-    @include('post._single_item')
+    @include('post.single._post')
 @endforeach
 
 @endsection
