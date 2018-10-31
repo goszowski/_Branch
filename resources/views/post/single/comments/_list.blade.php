@@ -1,4 +1,5 @@
 <div class="card-footer">
+    @if((isset($comments) and count($comments)) or count($post->popularPartOfComments))
     <ul class="list-unstyled">
         @if(isset($comments) and count($comments))
             @foreach($comments as $comment)
@@ -34,4 +35,8 @@
             @endforeach
         @endif
     </ul>
+    @endif
+
+    @include('post.single.comments._form')
+        
 </div>

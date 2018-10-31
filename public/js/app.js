@@ -13718,6 +13718,17 @@ $(function () {
   __WEBPACK_IMPORTED_MODULE_0_ladda__["a" /* bind */]('button[type=submit]', {
     style: 'expand-left'
   });
+
+  // autogrow
+  $('textarea.autogrow').autogrow();
+
+  // Submiting comments
+  $('textarea.submit-comment').on('keypress', function (event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      $(this).parent().parent().submit();
+    }
+  });
 });
 
 /***/ }),
