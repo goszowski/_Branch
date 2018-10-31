@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Like\PostLike;
 use Auth;
 use Misd\Linkify\Linkify;
+use Purifier;
 
 class Post extends Model
 {
@@ -35,8 +36,14 @@ class Post extends Model
 
     public function __construct(array $attributes = array())
     {
+        $this->linkify = new Linkify([
+            'attr' => [
+                'rel'=>'nofollow', 
+                'target'=>'_blank',
+            ]
+        ]);
+
         parent::__construct($attributes);
-        $this->linkify = new Linkify(['attr' => ['rel'=>'nofollow', 'target'=>'_blank']]);
     }
 
     public function user()
@@ -96,6 +103,8 @@ class Post extends Model
 
     public function getTextForDisplayAttribute()
     {
-        return nl2br(e($this->linkify->process($this->text)));
+        // Detecting links and replacing with <a> tag.
+        // Clearning all other tags
+        return nl2br(Purifier::clean($this->linkify->process($this->text)));
     }
 }
