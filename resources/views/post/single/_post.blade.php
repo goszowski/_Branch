@@ -32,7 +32,7 @@
         </div>
 
         {{-- Post body --}}
-        <p class="card-text mt-3">{{ $post->text }}</p>
+        <p class="card-text mt-3">{!! $post->textForDisplay !!}</p>
 
         {{-- / Post body --}}
         

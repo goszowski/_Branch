@@ -84,4 +84,9 @@ class Post extends Model
 
         return $this->objectCache['auth_user_is_owner'];
     }
+
+    public function getTextForDisplayAttribute()
+    {
+        return nl2br(e($this->text));
+    }
 }
