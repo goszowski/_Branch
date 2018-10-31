@@ -27,4 +27,16 @@ class PostController extends Controller
 
         return redirect('/');
     }
+
+    public function delete(Post $post)
+    {
+        if($post->user_id != Auth::id())
+        {
+            return abort(403, 'Unauthorized action.');
+        }
+
+        $post->delete();
+
+        return redirect()->back();
+    }
 }

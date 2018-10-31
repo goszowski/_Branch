@@ -17,5 +17,6 @@ Route::group(['middleware'=>['auth', 'web', 'verified']], function() {
     Route::get('/', 'FeedController@index')->name('feed');
     Route::get('/post/{post}', 'PostController@show')->name('post');
     Route::post('/post', 'PostController@store')->name('post.store');
+    Route::delete('/post/{post}', 'PostController@delete')->name('post.delete');
     Route::get('/{user}', 'ProfileController@show')->name('profile');
 });
