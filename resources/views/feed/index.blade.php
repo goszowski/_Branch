@@ -8,7 +8,7 @@
     <div class="media">
       <img src="{{ $post->user->image }}" class="img-thumbnail rounded-circle mr-3" style="width: 50px;" alt="">
       <div class="media-body pt-1">
-        <a href="#"><b>{{ $post->user->fullName }}</b></a> <br>
+        <a href="{{ route('profile', $post->user) }}"><b>{{ $post->user->fullName }}</b></a> <br>
         @php(Carbon::setLocale('uk'))
         <a href="#" class="text-muted" data-toggle="tooltip" data-delay='{"show":"1000", "hide":"10"}' title="{{ $post->created_at->format('d.m.Y H:i:s') }}">{{ Carbon::now()->diffForHumans($post->created_at) }}</a>
       </div>

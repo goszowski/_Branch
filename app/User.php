@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'slug', 'firstname', 'lastname', 'email', 'password', 'image',
+        'slug', 'firstname', 'lastname', 'email', 'password', 'image', 'background_image',
     ];
 
     /**
@@ -38,6 +38,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return SlugOptions::create()
             ->generateSlugsFrom(['firstname', 'lastname'])
             ->saveSlugsTo('slug');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     public function getFullNameAttribute()
