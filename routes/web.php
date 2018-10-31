@@ -14,7 +14,7 @@
 Auth::routes(['verify' => true]);
 
 Route::group(['middleware'=>['auth', 'web', 'verified']], function() {
-  Route::get('/', 'FeedController@index')->name('feed');
-
-  Route::get('/{user}', 'ProfileController@show')->name('profile');
+    Route::get('/', 'FeedController@index')->name('feed');
+    Route::get('/post/{post}', 'PostController@show')->name('post');
+    Route::get('/{user}', 'ProfileController@show')->name('profile');
 });
