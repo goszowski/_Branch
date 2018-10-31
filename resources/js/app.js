@@ -6,6 +6,8 @@
  */
 
 require('./bootstrap');
+require('angular');
+require('jquery-autogrow-textarea');
 import * as Ladda from 'ladda';
 
 

@@ -20,6 +20,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "angular": "^1.7.5",
+        "jquery-autogrow-textarea": "^1.2.1",
         "ladda": "^2.0.1"
     }
 }
