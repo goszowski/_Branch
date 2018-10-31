@@ -12,6 +12,7 @@ class Post extends Model
         'likes_amount' => null,
         'comments_amount' => null,
         'auth_user_like_it' => null,
+        'auth_user_is_owner' => false,
     ];
     /**
      * The table associated with the model.
@@ -72,5 +73,15 @@ class Post extends Model
         }
 
         return $this->objectCache['auth_user_like_it'];
+    }
+
+    public function getAuthUserIsOwnerAttribute()
+    {
+        if($this->objectCache['auth_user_is_owner'] === null)
+        {
+            $this->objectCache['auth_user_is_owner'] = ($this->user_id == Auth::id());
+        }
+
+        return $this->objectCache['auth_user_is_owner'];
     }
 }

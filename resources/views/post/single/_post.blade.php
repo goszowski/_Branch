@@ -22,6 +22,12 @@
                         {{ $post->created_at->diffForHumans() }}
                     </a>
                 </div>
+
+                
+            </div>
+
+            <div class="float-xs-right">
+                @include('post.single._options')
             </div>
         </div>
 
