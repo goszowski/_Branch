@@ -16,7 +16,11 @@
             </div>
             <div ng-class="{'d-none': (post_creating_form_is_activated==false)}" class="d-none">
                 <div class="float-left">
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Поділитись</button>
+                    <button type="submit" class="btn btn-primary ladda-button" data-style="slide-left">
+                        <span class="ladda-label">
+                                <i class="fas fa-check"></i> Поділитись
+                        </span>
+                    </button>
                 </div>
                 <div class="float-left pl-1">
                     <button type="button" class="btn btn-light" ng-click="post_creating_form_is_activated=false; 
