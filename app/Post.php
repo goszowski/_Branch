@@ -16,7 +16,7 @@ class Post extends Model
         'likes_amount' => null,
         'comments_amount' => null,
         'auth_user_like_it' => null,
-        'auth_user_is_owner' => false,
+        'auth_user_is_owner' => null,
     ];
     /**
      * The table associated with the model.
