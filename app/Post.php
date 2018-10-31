@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Like\PostLike;
 use Auth;
+use Misd\Linkify\Linkify;
 
 class Post extends Model
 {
+    protected $linkify;
+    
     protected $objectCache = [
         'likes_amount' => null,
         'comments_amount' => null,
@@ -29,6 +32,12 @@ class Post extends Model
     protected $fillable = [
         'user_id', 'text', 'popularity',
     ];
+
+    public function __construct(array $attributes = array())
+    {
+        parent::__construct($attributes);
+        $this->linkify = new Linkify(['attr' => ['rel'=>'nofollow', 'target'=>'_blank']]);
+    }
 
     public function user()
     {
@@ -87,6 +96,6 @@ class Post extends Model
 
     public function getTextForDisplayAttribute()
     {
-        return nl2br(e($this->text));
+        return nl2br(e($this->linkify->process($this->text)));
     }
 }
