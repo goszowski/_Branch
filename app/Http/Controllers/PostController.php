@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 use Auth;
 
 class PostController extends Controller
 {
-    public function show(Post $post)
+    public function show(Post $post, Comment $comment)
     {
         $comments = $post->comments;
-        return view('post.show', compact('post', 'comments'));
+        return view('post.show', compact('post', 'comments', 'comment'));
     }
 
     public function store(Request $request)

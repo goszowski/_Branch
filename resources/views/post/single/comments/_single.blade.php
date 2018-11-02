@@ -1,4 +1,4 @@
-<div class="media">
+<div class="media" id="post-{{ $post->id }}-comment-{{ $comment->id }}">
 
     {{-- User image --}}
     <a href="{{ route('profile', $comment->user) }}">
@@ -25,7 +25,7 @@
             <a href="#">Відповісти</a> | 
 
             {{-- Pubdate of comment --}}
-            <a href="#" 
+            <a href="{{ route('post', ['post'=>$post, 'comment'=>$comment]) }}" 
                 class="text-muted" 
                 data-toggle="tooltip" 
                 data-delay='{"show":"1000", "hide":"10"}' 

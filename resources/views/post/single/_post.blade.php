@@ -48,3 +48,20 @@
     @include('post.single.comments._list')
     {{-- / Post footer (comments) --}}
 </div>
+
+@if(isset($comment) and $comment->exists)
+    @section('js-section')
+    @parent
+    <script>
+
+    $(function() {
+        var comment = $('#post-{{ $post->id }}-comment-{{ $comment->id }}');
+        var offset = comment.offset();
+        $('html, body').animate({
+            scrollTop: offset.top - 100
+        }, 700);
+        comment.addClass('active');
+    });
+    </script>
+    @endsection
+@endif
