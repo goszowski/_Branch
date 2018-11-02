@@ -21,6 +21,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'image' => 'https://picsum.photos/50/50?'.time().mt_rand(100,999).str_random(10),
+        'background_image' => 'https://picsum.photos/990/250?'.time().mt_rand(100,999).str_random(10),
         'remember_token' => str_random(10),
         'email_verified_at' => Carbon::now(),
     ];

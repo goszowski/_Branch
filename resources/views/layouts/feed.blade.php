@@ -9,7 +9,7 @@
                 <a href="#" class="list-group-item list-group-item-action active">
                   <i class="far fa-newspaper"></i> <span class="ml-2">Новини</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> <span class="ml-2">Моя сторінка</span></a>
+                <a href="{{ route('profile', auth()->user()) }}" class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> <span class="ml-2">Моя сторінка</span></a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-comments"></i> <span class="ml-2">Повідомлення</span> <span class="badge badge-light">99+</span></a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-user"></i> <span class="ml-2">Друзі</span></a>
                 <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-users"></i> <span class="ml-2">Спільноти</span></a>

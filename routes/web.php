@@ -14,5 +14,11 @@
 Auth::routes(['verify' => true]);
 
 Route::group(['middleware'=>['auth', 'web', 'verified']], function() {
-  Route::get('/', 'FeedController@index')->name('feed');
+    Route::get('/', 'FeedController@index')->name('feed');
+    Route::get('/post/{post}/{comment?}', 'PostController@show')->name('post');
+    Route::post('/post', 'PostController@store')->name('post.store');
+    Route::delete('/post/{post}', 'PostController@delete')->name('post.delete');
+    Route::post('/post/{post}/comment', 'CommentController@store')->name('post.comment');
+
+    Route::get('/{user}', 'ProfileController@show')->name('profile');
 });

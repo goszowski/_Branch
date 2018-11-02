@@ -15,12 +15,12 @@ class FriendsTableSeeder extends Seeder
     public function run()
     {
 
-        for($i=1; $i<=100; $i++)
+        for($i=1; $i<=5000; $i++)
         {
           $this->userdIds = [];
           $user = User::find($i);
           
-          for($a=0; $a<60; $a++)
+          for($a=0; $a<320; $a++)
           {
             $randomFriend = User::whereNotIn('id', $this->userdIds)->inRandomOrder()->first();
             $this->userdIds[] = $randomFriend->id;

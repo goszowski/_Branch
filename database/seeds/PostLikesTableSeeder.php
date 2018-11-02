@@ -19,7 +19,7 @@ class PostLikesTableSeeder extends Seeder
         {
             $this->user_ids = [];
 
-            for($i=0; $i<mt_rand(8, 15); $i++)
+            for($i=0; $i<mt_rand(8, 18); $i++)
             {
                 $user = User::whereNotIn('id', $this->user_ids)->inRandomOrder()->first();
                 if($user)

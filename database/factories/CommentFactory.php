@@ -20,12 +20,12 @@ $factory->define(App\Comment::class, function (Faker $faker) {
 
     $con = mt_rand(0,1);
 
-    // if(!$con and !Comment::whereNull('comment_id')->exists())
-    // {
-    //   $con = true;
-    // }
+    if(!$con and !Comment::whereNull('comment_id')->exists())
+    {
+      $con = true;
+    }
 
-    $con = false;
+    // $con = false;
 
     return [
         'text' => $faker->realText,

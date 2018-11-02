@@ -6,22 +6,27 @@
  */
 
 require('./bootstrap');
-
-window.Vue = require('vue');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#app'
-});
+require('angular');
+require('jquery-autogrow-textarea');
+import * as Ladda from 'ladda';
 
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip();
+
+  // Ladda button - Buttons with built-in loading indicators
+  Ladda.bind('button[type=submit]', {
+      style: 'expand-left',
+  });
+
+  // autogrow
+  $('textarea.autogrow').autogrow();
+
+  // Submiting comments
+  $('textarea.submit-comment').on('keypress', function(event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        $(this).parent().parent().submit();
+    }
+  });
 })
