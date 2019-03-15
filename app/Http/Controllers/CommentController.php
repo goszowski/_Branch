@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Comments\CommentStoreRequest;
 use App\Comment;
 use App\Post;
 use Auth;
 
 class CommentController extends Controller
 {
-    public function store(Post $post, Request $request)
+    public function store(Post $post, CommentStoreRequest $request)
     {
-        $data = $this->validate($request, [
-            'comment_id' => 'nullable|integer|exists:comments,id',
-            'reply_to_user_id' => 'nullable|integer|exists:users,id',
-            'text' => 'required|string|max:512',
-        ]);
+        $data = $request->all();
 
         $data['user_id'] = Auth::id();
         $data['post_id'] = $post->id;
